@@ -1,3 +1,4 @@
+import axios, { Axios } from "axios";
 import { useState } from "react";
 
 function AddFrome() {
@@ -17,8 +18,18 @@ function AddFrome() {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      console.log("Submitted Data:", formData);
+
+      axios.post("http://localhost:4000/addData", formData)
+         .then((response) => {
+            console.log(response.data);
+            alert("Product added successfully!");
+         })
+         .catch((error) => {
+            console.error("Error adding product:", error);
+            alert("Something went wrong while adding the product.");
+         });
    };
+   
 
    return (
       <div className="max-w-md mx-auto p-4 border rounded shadow">

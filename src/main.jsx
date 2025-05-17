@@ -8,6 +8,10 @@ import './index.css';
 import App from './App';
 import Home from './Home';
 import AddFrome from './componet/AddFrome';
+import Items from './componet/Items';
+import Detlis from './componet/Detlis';
+
+
 
 
 // Define routes with loaders
@@ -25,6 +29,16 @@ const router = createBrowserRouter([
       {
         path: "/add",
         element: <AddFrome />
+      },
+
+      {
+
+        path: "/data",
+        element:<Items />
+      },
+      {
+        path: "/da/:id",
+        element: <Detlis />
       }
       
     ],

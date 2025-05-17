@@ -8,7 +8,7 @@ function Naver() {
             <nav className="space-x-4">
                <Link to={"/"}  className="hover:text-blue-600">Home</Link>
                <Link to={"/add"} className="hover:text-blue-600">Add</Link>
-               <a href="#" className="hover:text-blue-600">Item</a>
+               <Link to={"/data"} className="hover:text-blue-600">Item</Link>
                <a href="#" className="hover:text-blue-600">Contact</a>
             </nav>
 
