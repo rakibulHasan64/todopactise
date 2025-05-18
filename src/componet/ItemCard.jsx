@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 
@@ -5,19 +6,36 @@ import { useNavigate } from "react-router-dom";
 function ItemCard({ item }) {
 
    const navigate = useNavigate();
-   
 
-   
+
+   const handleClick = (id) => {
+      axios.delete("http://localhost:4000/addDelete", { data: { id } })
+         .then(res => console.log(res.data))
+         .catch(err => console.error(err));
+
+   };
+
+   const handleAddTo = (item) => {
+      axios.post("http://localhost:4000/addtocart", item)
+         .then(() => {
+            console.log("Item added to cart successfully");
+         })
+         .catch((err) => {
+            console.error("Error adding to cart:", err);
+         });
+   };
+    
+
    return (
       <>
-         
+
          <div className="max-w-sm rounded overflow-hidden shadow-lg p-4 border my-4">
             {/* Image */}
             <img
                className="w-full h-48 object-cover"
                src={item.image}
                alt="item Image"
-               
+
             />
 
             {/* Details */}
@@ -33,13 +51,16 @@ function ItemCard({ item }) {
                   <button onClick={() => navigate(`/da/${item._id}`)} className="py-2 px-4 bg-blue-700 rounded text-white mt-4">Detlis</button>
 
 
-                  <button className="py-2 px-4 bg-blue-700 rounded text-white mt-4">Delet</button>
+                  <button onClick={() => handleClick(item._id)} className="py-2 px-4 bg-blue-700 rounded text-white mt-4">Delet</button>
 
                   <button className="py-2 px-4 bg-blue-700 rounded text-white mt-4">Edite</button>
+
+
+                  <button onClick={()=> handleAddTo(item)} className="py-2 px-4 bg-blue-700 rounded text-white mt-4">Add to cart</button>
                </div>
             </div>
          </div>
-         
+
       </>
    );
 }

@@ -10,6 +10,7 @@ import Home from './Home';
 import AddFrome from './componet/AddFrome';
 import Items from './componet/Items';
 import Detlis from './componet/Detlis';
+import AddToCart from './componet/AddToCart';
 
 
 
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/da/:id",
         element: <Detlis />
+      },
+      {
+        path: "/add-to-cart",
+        element:<AddToCart />
       }
       
     ],

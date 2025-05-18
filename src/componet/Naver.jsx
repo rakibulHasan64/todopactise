@@ -1,3 +1,4 @@
+import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function Naver() {
@@ -12,7 +13,14 @@ function Naver() {
                <a href="#" className="hover:text-blue-600">Contact</a>
             </nav>
 
-            <div className=""></div>
+            <div className="">
+               <Link to={"/add-to-cart"}>
+                   
+                  <button className="text-xl"> <FaShoppingCart /> </button>
+               </Link>
+
+               <button className="w-6 h-6 rounded-full bg-amber-900 text-white"></button>
+            </div>
          </div>
       </div>
    );
