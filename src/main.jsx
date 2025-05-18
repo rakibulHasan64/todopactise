@@ -11,6 +11,7 @@ import AddFrome from './componet/AddFrome';
 import Items from './componet/Items';
 import Detlis from './componet/Detlis';
 import AddToCart from './componet/AddToCart';
+import AddToCat from './context/AddToCat';
 
 
 
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AddToCat>
+      <RouterProvider router={router} />
+
+    </AddToCat>
+    
   </StrictMode>
 );

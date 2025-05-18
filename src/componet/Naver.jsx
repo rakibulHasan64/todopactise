@@ -1,7 +1,13 @@
+import { useContext } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AddToCat";
 
 function Naver() {
+
+   const { data } = useContext(AuthContext);
+   console.log(data);
+   
    return (
       <div className="py-6 container mx-auto">
          <div className="flex justify-between items-center">
@@ -19,7 +25,7 @@ function Naver() {
                   <button className="text-xl"> <FaShoppingCart /> </button>
                </Link>
 
-               <button className="w-6 h-6 rounded-full bg-amber-900 text-white"></button>
+               <button className="w-6 h-6 rounded-full bg-amber-900 text-white">{data.length}</button>
             </div>
          </div>
       </div>

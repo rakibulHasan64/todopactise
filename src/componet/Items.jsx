@@ -25,7 +25,9 @@ function Items() {
          <div className="container mx-auto py-12 grid-cols-4">
 
 
-            {data.map((item) => <ItemCard key={item._id} item={item} />)}
+            <div className="grid grid-cols-4 gap-3">
+               {data.map((item) => <ItemCard key={item._id} item={item} />)}
+            </div>
          </div>
          
          

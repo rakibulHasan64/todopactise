@@ -1,11 +1,15 @@
 import axios from "axios";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AddToCat";
 
 
 
 function ItemCard({ item }) {
 
    const navigate = useNavigate();
+
+   const { handleAddTo } = useContext(AuthContext)
 
 
    const handleClick = (id) => {
@@ -15,15 +19,15 @@ function ItemCard({ item }) {
 
    };
 
-   const handleAddTo = (item) => {
-      axios.post("http://localhost:4000/addtocart", item)
-         .then(() => {
-            console.log("Item added to cart successfully");
-         })
-         .catch((err) => {
-            console.error("Error adding to cart:", err);
-         });
-   };
+   // const handleAddTo = (item) => {
+   //    axios.post("http://localhost:4000/addtocart", item)
+   //       .then(() => {
+   //          console.log("Item added to cart successfully");
+   //       })
+   //       .catch((err) => {
+   //          console.error("Error adding to cart:", err);
+   //       });
+   // };
     
 
    return (
