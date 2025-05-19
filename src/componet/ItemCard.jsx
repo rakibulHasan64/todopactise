@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AddToCat";
 
 
@@ -9,26 +9,17 @@ function ItemCard({ item }) {
 
    const navigate = useNavigate();
 
-   const { handleAddTo } = useContext(AuthContext)
+   const { handleAddTo, handleClick } = useContext(AuthContext)
 
 
-   const handleClick = (id) => {
-      axios.delete("http://localhost:4000/addDelete", { data: { id } })
-         .then(res => console.log(res.data))
-         .catch(err => console.error(err));
+   // const handleClick = (id) => {
+   //    axios.delete("http://localhost:4000/addDelete", { data: { id } })
+   //       .then(res => console.log(res.data))
+   //       .catch(err => console.error(err));
 
-   };
-
-   // const handleAddTo = (item) => {
-   //    axios.post("http://localhost:4000/addtocart", item)
-   //       .then(() => {
-   //          console.log("Item added to cart successfully");
-   //       })
-   //       .catch((err) => {
-   //          console.error("Error adding to cart:", err);
-   //       });
    // };
-    
+
+   
 
    return (
       <>
@@ -57,7 +48,7 @@ function ItemCard({ item }) {
 
                   <button onClick={() => handleClick(item._id)} className="py-2 px-4 bg-blue-700 rounded text-white mt-4">Delet</button>
 
-                  <button className="py-2 px-4 bg-blue-700 rounded text-white mt-4">Edite</button>
+                  <Link to={`/updated/${item._id}`}  className="py-2 px-4 bg-blue-700 rounded text-white mt-4">Edite</Link>
 
 
                   <button onClick={()=> handleAddTo(item)} className="py-2 px-4 bg-blue-700 rounded text-white mt-4">Add to cart</button>

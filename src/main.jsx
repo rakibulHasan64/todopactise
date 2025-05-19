@@ -12,6 +12,7 @@ import Items from './componet/Items';
 import Detlis from './componet/Detlis';
 import AddToCart from './componet/AddToCart';
 import AddToCat from './context/AddToCat';
+import Updated from './componet/Updated';
 
 
 
@@ -45,7 +46,15 @@ const router = createBrowserRouter([
       {
         path: "/add-to-cart",
         element:<AddToCart />
+      },
+      {
+        path: "/updated/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:4000/updated/${params.id}`),
+        element: <Updated />,
       }
+      
+      
       
     ],
   },

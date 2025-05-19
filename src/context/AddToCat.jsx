@@ -26,11 +26,26 @@ function AddToCat({ children }) {
             console.error("Error adding to cart:", err);
          });
    };
+   
+
+   const handleClick = (id) => {
+      axios.delete("http://localhost:4000/addDelete", { data: { id } })
+         .then(() => {
+            // এই লাইনটা যোগ করো: delete হওয়া item টা বাদ দিয়ে নতুন list তৈরি
+            setData(prev => prev.filter(item => item._id !== id));
+         })
+         .catch(err => console.error(err));
+   };
+    
+
+
 
    const userInfo = {
       data,
       setData,
-      handleAddTo, // 👈 Add this
+      handleAddTo,
+      handleClick
+      // 👈 Add this
    };
 
    return (
